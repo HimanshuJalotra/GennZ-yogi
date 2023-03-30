@@ -34,7 +34,7 @@ export default function Login(props) {
         method:'Post',
         body:JSON.stringify({tempname,tempemail,temppass,tempnumber}) ,
         headers:{ 
-             'Content-type':'Application/json'
+             'Content-Type':'Application/json'
         }, 
       }) ; 
       result = await result.json() ; 
