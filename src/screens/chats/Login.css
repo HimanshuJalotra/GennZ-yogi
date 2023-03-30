@@ -1,6 +1,6 @@
 .login-card { 
     width: 500px;
-    height: 350px;
+    height: 400px;
     margin-left: 30%;
     margin-right: 20%;
     margin-top: 123px;
@@ -9,10 +9,10 @@
     border-radius: 2%;
     border-color: #D9DDDC;
     box-shadow: 5px 5px 5px 5px #C7C6C1;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-left: 15px;
     background-color: #548fad;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     }
 
     .login-container { 
@@ -37,6 +37,6 @@
  width: 400px;
  border-color: #e6f0f4 ;
  background-color:  #e6f0f4;
- margin: 30px;
- margin-left: 30px;
+ margin: 10px;
+ margin-left: 20px;
 }

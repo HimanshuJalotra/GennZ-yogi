@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Button from '@mui/material/Button';
 import './Login.css'
+import './Signup'
 import Footer from '../../common/Footer/Footer'
+import Signup from './Signup';
+import { response } from 'express';
 export default function Login(props) {
 
     const userData = [
@@ -20,7 +23,11 @@ export default function Login(props) {
      const[tempemail , setTempemail] = useState ("") 
     const[tempnumber , setTempnumber] = useState ("") 
      const[value, setValue] = useState("true")
-    const[data , useData] = useState()
+    const[signup , setsignup] = useState("false")
+
+    const setform=()=>{ 
+      setsignup("true") ; 
+    }
 
      const setLogindata=async ()=> { 
        setUser({ 
@@ -32,32 +39,34 @@ export default function Login(props) {
 
       let result = await fetch('http://localhost:5001/register' , { 
         method:'Post',
-        body:JSON.stringify({tempname,tempemail,temppass,tempnumber}) ,
+        body:JSON.stringify({name:tempname,password:temppass}) ,
         headers:{ 
              'Content-Type':'Application/json'
         }, 
       }) ; 
-      result = await result.json() ; 
-      console.log(result) ; 
+
      }
 
 
   return (
+  <div>
+    {(signup==="false")? (
     <div className='login-container'>
     <div className='login-card'>
-        <h3>Please login to chat!</h3>
+        <h3>Please login to chat else signup!</h3>
         <form className='loginform'> 
             <input type="text" placeholder="name" onChange={(e)=> {setTempname(e.target.value)}}></input>
             <br></br>
             <input type="password" placeholder="password" onChange={(e)=> {setTempass(e.target.value)}} ></input>
             <br></br>
-            <input type="text" placeholder="email" onChange={(e)=> {setTempemail(e.target.value)}} ></input>
-            <br></br>
-            <input type="number" placeholder="phone-number" onChange={(e)=> {setTempnumber(e.target.value)}} ></input>
+           
         </form>
-        <Button variant="contained" color="success" onClick={setLogindata}>login</Button>
+        <Button variant="contained" color="success" onClick={setLogindata}>login</Button> <Button variant="contained" color="success" onClick={setform}>Signup!</Button> 
     </div>
-      <Footer/>
     </div>
+    ) :  (<Signup loginhandler={props.loginhandler}/>) }
+
+ </div>
+      
   )
 }
